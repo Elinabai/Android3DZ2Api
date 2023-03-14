@@ -17,7 +17,6 @@ class LocationAdapter : RecyclerView.Adapter<LocationAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-
     class ViewHolder(private var binding: ItemLocationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(locationModel: LocationModel) {

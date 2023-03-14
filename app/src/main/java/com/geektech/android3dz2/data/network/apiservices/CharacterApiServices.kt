@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface CharacterApiServices {
     @GET("api/character")
-    fun fetchCharacter(): Call<RickAndMortyResponse<CharacterModel>>
+    fun fetchCharacter():Call<RickAndMortyResponse<CharacterModel>>
 }

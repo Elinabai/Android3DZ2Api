@@ -22,7 +22,6 @@ class LocationViewModel : ViewModel() {
                         data.value = it
                     }
                 }
-
                 override fun onFailure(
                     call: Call<RickAndMortyResponse<LocationModel>>,
                     t: Throwable,

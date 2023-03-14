@@ -22,7 +22,6 @@ class CharacterViewModel : ViewModel() {
                         data.value = it
                     }
                 }
-
                 override fun onFailure(
                     call: Call<RickAndMortyResponse<CharacterModel>>,
                     t: Throwable,

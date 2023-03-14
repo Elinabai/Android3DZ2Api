@@ -45,8 +45,3 @@ class EpisodeFragment : Fragment() {
     }
 }
 
-//private fun setupObserve() {
-//    viewModel?.fetchLocation()?.observe(viewLifecycleOwner){
-//        locationAdapter.setList(it.result)
-//    }
-//}

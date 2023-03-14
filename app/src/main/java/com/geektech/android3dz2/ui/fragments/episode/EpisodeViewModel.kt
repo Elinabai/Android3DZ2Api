@@ -22,7 +22,6 @@ class EpisodeViewModel : ViewModel() {
                         data.value = it
                     }
                 }
-
                 override fun onFailure(
                     call: Call<RickAndMortyResponse<EpisodeModel>>,
                     t: Throwable,

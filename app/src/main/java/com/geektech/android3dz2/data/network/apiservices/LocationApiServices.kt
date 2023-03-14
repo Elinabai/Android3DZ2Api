@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface LocationApiServices {
     @GET("api/location")
-    fun fetchLocation(): Call<RickAndMortyResponse<LocationModel>>
+    fun fetchLocation():Call<RickAndMortyResponse<LocationModel>>
 }

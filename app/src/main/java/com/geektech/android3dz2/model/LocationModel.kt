@@ -18,6 +18,4 @@ data class LocationModel(
 
     @SerializedName("created")
     val created: String
-
-
 )
