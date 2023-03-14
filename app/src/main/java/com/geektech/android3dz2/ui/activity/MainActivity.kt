@@ -14,13 +14,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupNavigation()
     }
 
     private fun setupNavigation() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        as NavHostFragment
+                as NavHostFragment
         val navController = navHostFragment.navController
 
         binding.navBtn.setupWithNavController(navController)

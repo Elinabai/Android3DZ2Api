@@ -7,14 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.geektech.android3dz2.R
 import com.geektech.android3dz2.databinding.FragmentEpisodeBinding
-import com.geektech.android3dz2.databinding.FragmentLocationBinding
-import com.geektech.android3dz2.databinding.ItemEpisodeBinding
-import com.geektech.android3dz2.model.EpisodeModel
 import com.geektech.android3dz2.ui.adapters.EpisodeAdapter
-import com.geektech.android3dz2.ui.adapters.LocationAdapter
-import com.geektech.android3dz2.ui.fragments.location.LocationViewModel
 
 class EpisodeFragment : Fragment() {
 
@@ -25,8 +19,8 @@ class EpisodeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        binding = FragmentEpisodeBinding.inflate(inflater,container,false)
+    ): View {
+        binding = FragmentEpisodeBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[EpisodeViewModel::class.java]
         return binding.root
     }
@@ -45,7 +39,7 @@ class EpisodeFragment : Fragment() {
     }
 
     private fun setupObserve() {
-        viewModel?.fetchEpisode()?.observe(viewLifecycleOwner){
+        viewModel?.fetchEpisode()?.observe(viewLifecycleOwner) {
             episodeAdapter.setList(it.result)
         }
     }

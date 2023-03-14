@@ -13,7 +13,7 @@ class EpisodeViewModel : ViewModel() {
     fun fetchEpisode(): MutableLiveData<RickAndMortyResponse<EpisodeModel>> {
         val data: MutableLiveData<RickAndMortyResponse<EpisodeModel>> = MutableLiveData()
         App.episodeApiServices?.fetchEpisode()
-            ?.enqueue(object :  retrofit2.Callback<RickAndMortyResponse<EpisodeModel>> {
+            ?.enqueue(object : retrofit2.Callback<RickAndMortyResponse<EpisodeModel>> {
                 override fun onResponse(
                     call: Call<RickAndMortyResponse<EpisodeModel>>,
                     response: Response<RickAndMortyResponse<EpisodeModel>>,

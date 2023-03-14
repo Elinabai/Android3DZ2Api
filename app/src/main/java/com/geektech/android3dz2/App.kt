@@ -6,9 +6,9 @@ import com.geektech.android3dz2.data.network.apiservices.CharacterApiServices
 import com.geektech.android3dz2.data.network.apiservices.EpisodeApiServices
 import com.geektech.android3dz2.data.network.apiservices.LocationApiServices
 
-class App: Application() {
+class App : Application() {
 
-    companion object{
+    companion object {
         var characterApiServices: CharacterApiServices? = null
         var locationApiServices: LocationApiServices? = null
         var episodeApiServices: EpisodeApiServices? = null
