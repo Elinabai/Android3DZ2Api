@@ -40,7 +40,6 @@
                 app:layout_constraintStart_toEndOf="@id/item_character_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
                 android:id="@+id/item_character_name"
                 android:layout_width="0dp"

@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geektech.android3dz2.databinding.ItemLocationBinding
 import com.geektech.android3dz2.model.LocationModel
 
-class LocationAdapter : RecyclerView.Adapter<LocationAdapter.ViewHolder>() {
+class LocationAdapter(val onItemClick: (locationModel: LocationModel) -> Unit) :
+    RecyclerView.Adapter<LocationAdapter.ViewHolder>() {
 
     private var listLocation: List<LocationModel> = ArrayList()
 
@@ -17,8 +18,15 @@ class LocationAdapter : RecyclerView.Adapter<LocationAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private var binding: ItemLocationBinding) :
+    inner class ViewHolder(private var binding: ItemLocationBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick(listLocation[bindingAdapterPosition])
+            }
+        }
+
         fun onBind(locationModel: LocationModel) {
             binding.itemLocationCreated.text = locationModel.created
             binding.itemLocationName.text = locationModel.name

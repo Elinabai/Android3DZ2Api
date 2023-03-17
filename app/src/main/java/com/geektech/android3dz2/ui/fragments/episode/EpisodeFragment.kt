@@ -1,47 +1,42 @@
 package com.geektech.android3dz2.ui.fragments.episode
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.geektech.android3dz2.R
+import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentEpisodeBinding
+import com.geektech.android3dz2.model.EpisodeModel
 import com.geektech.android3dz2.ui.adapters.EpisodeAdapter
 
-class EpisodeFragment : Fragment() {
+class EpisodeFragment :
+    BaseFragment<FragmentEpisodeBinding, EpisodeViewModel>(R.layout.fragment_episode) {
 
-    private var viewModel: EpisodeViewModel? = null
-    private lateinit var binding: FragmentEpisodeBinding
-    private val episodeAdapter = EpisodeAdapter()
+    override val binding by viewBinding(FragmentEpisodeBinding::bind)
+    override val viewModel: EpisodeViewModel by viewModels()
+    private var episodeAdapter = EpisodeAdapter(this::onItemClick)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        binding = FragmentEpisodeBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[EpisodeViewModel::class.java]
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initialize()
-        setupObserve()
-    }
-
-    private fun initialize() {
+    override fun initialise() {
         binding.episodeRecView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = episodeAdapter
         }
     }
 
-    private fun setupObserve() {
-        viewModel?.fetchEpisode()?.observe(viewLifecycleOwner) {
+    override fun setupObserve() {
+        viewModel.fetchEpisode().observe(viewLifecycleOwner) {
             episodeAdapter.setList(it.result)
         }
     }
-}
 
+    private fun onItemClick(episodeModel: EpisodeModel) {
+        findNavController().navigate(EpisodeFragmentDirections.actionEpisodeFragmentToEpisodeDetailFragment(
+            episodeModel.name,
+            episodeModel.air_date,
+            episodeModel.created,
+            episodeModel.episode,
+            episodeModel.id)
+        )
+    }
+}

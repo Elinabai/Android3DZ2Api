@@ -4,11 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.geektech.android3dz2.databinding.ItemCharacterBinding
+import com.geektech.android3dz2.extension.setImage
 import com.geektech.android3dz2.model.CharacterModel
 
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
+class CharacterAdapter(val onItemClick: (characterModel: CharacterModel) -> Unit) :
+    RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     private var listCharacter: List<CharacterModel> = ArrayList()
 
@@ -18,14 +19,20 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ItemCharacterBinding) :
+    inner class ViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick(listCharacter[bindingAdapterPosition])
+            }
+        }
+
         fun onBind(characterModel: CharacterModel) {
             binding.itemCharacterName.text = characterModel.name
             binding.itemCharacterGender.text = characterModel.gender
             binding.itemCharacterStatus.text = characterModel.status
-            Glide.with(binding.itemCharacterImage.context).load(characterModel.image)
-                .into(binding.itemCharacterImage)
+            binding.itemCharacterImage.setImage(characterModel.image)
         }
     }
 

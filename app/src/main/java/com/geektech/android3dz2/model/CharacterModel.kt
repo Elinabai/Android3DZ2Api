@@ -3,6 +3,7 @@ package com.geektech.android3dz2.model
 import com.google.gson.annotations.SerializedName
 
 data class CharacterModel(
+
     @SerializedName("id")
     val id: Int,
 
@@ -16,5 +17,5 @@ data class CharacterModel(
     val status: String,
 
     @SerializedName("gender")
-    val gender: String
+    val gender: String,
 )

@@ -17,5 +17,5 @@ data class LocationModel(
     val type: String,
 
     @SerializedName("created")
-    val created: String
+    val created: String,
 )

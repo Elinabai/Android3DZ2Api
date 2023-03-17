@@ -13,4 +13,5 @@
     <string name="the_dimension_in_which_the_location_is_located">The dimension in which the location is located.</string>
     <string name="the_type_of_the_location">The type of the location.</string>
     <string name="time_at_which_the_location_was_created_in_the_database">Time at which the location was created in the database.</string>
+    <string name="time_at_which_the_location_was_created_in_the_databas">time_at_which_the_location_was_created_in_the_databas</string>
 </resources>

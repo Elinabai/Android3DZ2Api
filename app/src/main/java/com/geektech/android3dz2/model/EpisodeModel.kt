@@ -3,6 +3,7 @@ package com.geektech.android3dz2.model
 import com.google.gson.annotations.SerializedName
 
 data class EpisodeModel(
+
     @SerializedName("id")
     val id: Int,
 
@@ -16,5 +17,5 @@ data class EpisodeModel(
     val created: String,
 
     @SerializedName("episode")
-    val episode: String
+    val episode: String,
 )

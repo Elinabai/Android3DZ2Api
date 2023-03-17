@@ -1,46 +1,42 @@
 package com.geektech.android3dz2.ui.fragments.character
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.geektech.android3dz2.R
+import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentCharacterBinding
+import com.geektech.android3dz2.model.CharacterModel
 import com.geektech.android3dz2.ui.adapters.CharacterAdapter
 
-class CharacterFragment : Fragment() {
+class CharacterFragment :
+    BaseFragment<FragmentCharacterBinding, CharacterViewModel>(R.layout.fragment_character) {
 
-    private var viewModel: CharacterViewModel? = null
-    private lateinit var binding: FragmentCharacterBinding
-    private var characterAdapter = CharacterAdapter()
+    override val binding by viewBinding(FragmentCharacterBinding::bind)
+    override val viewModel: CharacterViewModel by viewModels()
+    private var characterAdapter = CharacterAdapter(this::onItemClick)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        binding = FragmentCharacterBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[CharacterViewModel::class.java]
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initialize()
-        setupObserve()
-    }
-
-    private fun initialize() {
+    override fun initialise() {
         binding.characterRecView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = characterAdapter
         }
     }
 
-    private fun setupObserve() {
-        viewModel?.fetchCharacter()?.observe(viewLifecycleOwner) {
+    override fun setupObserve() {
+        viewModel.fetchCharacter().observe(viewLifecycleOwner) {
             characterAdapter.setList(it.result)
         }
+    }
+
+    private fun onItemClick(characterModel: CharacterModel) {
+        findNavController().navigate(CharacterFragmentDirections.actionCharacterFragmentToCharacterDetailFragment(
+            characterModel.name,
+            characterModel.image,
+            characterModel.status,
+            characterModel.gender,
+            characterModel.id)
+        )
     }
 }

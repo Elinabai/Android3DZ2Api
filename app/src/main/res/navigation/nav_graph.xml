@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/characterFragment">
 
@@ -9,15 +9,95 @@
         android:id="@+id/characterFragment"
         android:name="com.geektech.android3dz2.ui.fragments.character.CharacterFragment"
         android:label="characterFragment"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character">
+        <action
+            android:id="@+id/action_characterFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.geektech.android3dz2.ui.fragments.location.LocationFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_location" />
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_locationFragment_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/episodeFragment"
         android:name="com.geektech.android3dz2.ui.fragments.episode.EpisodeFragment"
         android:label="fragment_episode"
-        tools:layout="@layout/fragment_episode" />
+        tools:layout="@layout/fragment_episode">
+        <action
+            android:id="@+id/action_episodeFragment_to_episodeDetailFragment"
+            app:destination="@id/episodeDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.geektech.android3dz2.ui.fragments.character.CharacterDetailFragment"
+        android:label="fragment_character_detail"
+        tools:layout="@layout/fragment_character_detail">
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="image"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/episodeDetailFragment"
+        android:name="com.geektech.android3dz2.ui.fragments.episode.EpisodeDetailFragment"
+        android:label="fragment_episode_detail"
+        tools:layout="@layout/fragment_episode_detail">
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="air_date"
+            app:argType="string" />
+        <argument
+            android:name="created"
+            app:argType="string" />
+        <argument
+            android:name="episode"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationDetailFragment"
+        android:name="com.geektech.android3dz2.ui.fragments.location.LocationDetailFragment"
+        android:label="fragment_location_detail"
+        tools:layout="@layout/fragment_location_detail">
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="dimension"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="created"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geektech.android3dz2.databinding.ItemEpisodeBinding
 import com.geektech.android3dz2.model.EpisodeModel
 
-class EpisodeAdapter : RecyclerView.Adapter<EpisodeAdapter.ViewHolder>() {
+class EpisodeAdapter(val onItemClick: (episodeModel: EpisodeModel) -> Unit) :
+    RecyclerView.Adapter<EpisodeAdapter.ViewHolder>() {
 
     private var listEpisode: List<EpisodeModel> = ArrayList()
 
@@ -17,15 +18,21 @@ class EpisodeAdapter : RecyclerView.Adapter<EpisodeAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ItemEpisodeBinding) :
+    inner class ViewHolder(private val binding: ItemEpisodeBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick(listEpisode[bindingAdapterPosition])
+            }
+        }
+
         fun onBind(episodeModel: EpisodeModel) {
             binding.itemEpisodeEpisode.text = episodeModel.episode
             binding.itemEpisodeAirDate.text = episodeModel.air_date
             binding.itemEpisodeCreated.text = episodeModel.created
             binding.itemLocationName.text = episodeModel.name
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -10,6 +10,7 @@ class App : Application() {
 
     companion object {
 
+        var retrofitClient = RetrofitClient()
         var characterApiServices: CharacterApiServices? = null
         var locationApiServices: LocationApiServices? = null
         var episodeApiServices: EpisodeApiServices? = null
@@ -18,8 +19,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        characterApiServices = RetrofitClient().provideCharacterApiServices()
-        locationApiServices = RetrofitClient().provideLocationApiServices()
-        episodeApiServices = RetrofitClient().provideEpisodeApiServices()
+        characterApiServices = retrofitClient.provideCharacterApiServices()
+        locationApiServices = retrofitClient.provideLocationApiServices()
+        episodeApiServices = retrofitClient.provideEpisodeApiServices()
     }
 }

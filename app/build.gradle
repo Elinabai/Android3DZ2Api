@@ -65,7 +65,14 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor"
 
-    //Glide
+    // Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    // ViewBindingPropertyDelegate
+    def view_binding_property_delegate = '1.5.3'
+    // To use only without reflection variants of viewBinding
+    //noinspection GradleDependency
+    implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_binding_property_delegate"
+
 }
