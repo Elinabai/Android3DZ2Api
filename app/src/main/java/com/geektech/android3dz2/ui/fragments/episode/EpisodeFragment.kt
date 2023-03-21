@@ -1,14 +1,15 @@
 package com.geektech.android3dz2.ui.fragments.episode
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentEpisodeBinding
-import com.geektech.android3dz2.model.EpisodeModel
 import com.geektech.android3dz2.ui.adapters.EpisodeAdapter
+import kotlinx.coroutines.launch
 
 class EpisodeFragment :
     BaseFragment<FragmentEpisodeBinding, EpisodeViewModel>(R.layout.fragment_episode) {
@@ -25,18 +26,15 @@ class EpisodeFragment :
     }
 
     override fun setupObserve() {
-        viewModel.fetchEpisode().observe(viewLifecycleOwner) {
-            episodeAdapter.setList(it.result)
+        lifecycleScope.launch {
+            viewModel.fetchEpisode().collect {
+                episodeAdapter.submitData(it)
+            }
         }
     }
 
-    private fun onItemClick(episodeModel: EpisodeModel) {
+    private fun onItemClick(id: Int) {
         findNavController().navigate(EpisodeFragmentDirections.actionEpisodeFragmentToEpisodeDetailFragment(
-            episodeModel.name,
-            episodeModel.air_date,
-            episodeModel.created,
-            episodeModel.episode,
-            episodeModel.id)
-        )
+            id))
     }
 }

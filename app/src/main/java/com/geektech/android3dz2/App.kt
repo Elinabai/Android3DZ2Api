@@ -9,7 +9,6 @@ import com.geektech.android3dz2.data.network.apiservices.LocationApiServices
 class App : Application() {
 
     companion object {
-
         var retrofitClient = RetrofitClient()
         var characterApiServices: CharacterApiServices? = null
         var locationApiServices: LocationApiServices? = null
@@ -18,7 +17,6 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         characterApiServices = retrofitClient.provideCharacterApiServices()
         locationApiServices = retrofitClient.provideLocationApiServices()
         episodeApiServices = retrofitClient.provideEpisodeApiServices()

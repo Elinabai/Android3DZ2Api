@@ -7,7 +7,6 @@ import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentLocationDetailBinding
 
-
 class LocationDetailFragment :
     BaseFragment<FragmentLocationDetailBinding, LocationViewModel>(R.layout.fragment_location_detail) {
 
@@ -17,11 +16,10 @@ class LocationDetailFragment :
 
     override fun setupObserve() {
         viewModel.fetchLocationDetail(args.id).observe(viewLifecycleOwner) {
-            binding.tvTextType.id
-            binding.tvTextName.text = args.name
-            binding.tvTextDimension.text = args.dimension
-            binding.tvTextType.text = args.type
-            binding.tvTextCreated.text = args.created
+            binding.tvTextName.text = it.name
+            binding.tvTextDimension.text = it.dimension
+            binding.tvTextType.text = it.type
+            binding.tvTextCreated.text = it.created
         }
     }
 }

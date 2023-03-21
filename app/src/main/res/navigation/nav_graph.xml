@@ -41,18 +41,6 @@
         android:label="fragment_character_detail"
         tools:layout="@layout/fragment_character_detail">
         <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="image"
-            app:argType="string" />
-        <argument
-            android:name="status"
-            app:argType="string" />
-        <argument
-            android:name="gender"
-            app:argType="string" />
-        <argument
             android:name="id"
             app:argType="integer" />
     </fragment>
@@ -63,18 +51,6 @@
         android:label="fragment_episode_detail"
         tools:layout="@layout/fragment_episode_detail">
         <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="air_date"
-            app:argType="string" />
-        <argument
-            android:name="created"
-            app:argType="string" />
-        <argument
-            android:name="episode"
-            app:argType="string" />
-        <argument
             android:name="id"
             app:argType="integer" />
     </fragment>
@@ -84,18 +60,6 @@
         android:name="com.geektech.android3dz2.ui.fragments.location.LocationDetailFragment"
         android:label="fragment_location_detail"
         tools:layout="@layout/fragment_location_detail">
-        <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="dimension"
-            app:argType="string" />
-        <argument
-            android:name="type"
-            app:argType="string" />
-        <argument
-            android:name="created"
-            app:argType="string" />
         <argument
             android:name="id"
             app:argType="integer" />

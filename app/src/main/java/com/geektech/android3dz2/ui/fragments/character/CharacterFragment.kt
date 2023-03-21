@@ -1,20 +1,21 @@
 package com.geektech.android3dz2.ui.fragments.character
 
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentCharacterBinding
-import com.geektech.android3dz2.model.CharacterModel
 import com.geektech.android3dz2.ui.adapters.CharacterAdapter
+import kotlinx.coroutines.launch
 
 class CharacterFragment :
     BaseFragment<FragmentCharacterBinding, CharacterViewModel>(R.layout.fragment_character) {
 
     override val binding by viewBinding(FragmentCharacterBinding::bind)
-    override val viewModel: CharacterViewModel by viewModels()
+    override val viewModel: CharacterViewModel by activityViewModels()
     private var characterAdapter = CharacterAdapter(this::onItemClick)
 
     override fun initialise() {
@@ -25,18 +26,15 @@ class CharacterFragment :
     }
 
     override fun setupObserve() {
-        viewModel.fetchCharacter().observe(viewLifecycleOwner) {
-            characterAdapter.setList(it.result)
+        lifecycleScope.launch {
+            viewModel.fetchCharacter().collect {
+                characterAdapter.submitData(it)
+            }
         }
     }
 
-    private fun onItemClick(characterModel: CharacterModel) {
+    private fun onItemClick(id: Int) {
         findNavController().navigate(CharacterFragmentDirections.actionCharacterFragmentToCharacterDetailFragment(
-            characterModel.name,
-            characterModel.image,
-            characterModel.status,
-            characterModel.gender,
-            characterModel.id)
-        )
+            id))
     }
 }

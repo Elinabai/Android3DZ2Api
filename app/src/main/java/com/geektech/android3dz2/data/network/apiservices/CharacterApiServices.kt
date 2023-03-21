@@ -5,11 +5,12 @@ import com.geektech.android3dz2.model.RickAndMortyResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CharacterApiServices {
 
     @GET("api/character")
-    fun fetchCharacter(): Call<RickAndMortyResponse<CharacterModel>>
+    suspend fun fetchCharacter(@Query("page")page: Int): RickAndMortyResponse<CharacterModel>
 
     @GET("/api/character/{id}")
     fun fetchCharactersDetail(@Path("id") id: Int): Call<CharacterModel>

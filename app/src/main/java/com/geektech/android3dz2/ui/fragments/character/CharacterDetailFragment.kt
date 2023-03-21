@@ -1,6 +1,6 @@
 package com.geektech.android3dz2.ui.fragments.character
 
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.android3dz2.R
@@ -12,16 +12,15 @@ class CharacterDetailFragment :
     BaseFragment<FragmentCharacterDetailBinding, CharacterViewModel>(R.layout.fragment_character_detail) {
 
     override val binding by viewBinding(FragmentCharacterDetailBinding::bind)
-    override val viewModel: CharacterViewModel by viewModels()
+    override val viewModel: CharacterViewModel by activityViewModels()
     private val args by navArgs<CharacterDetailFragmentArgs>()
 
     override fun setupObserve() {
         viewModel.fetchCharacterDetail(args.id).observe(viewLifecycleOwner) {
-            binding.tvTextGender.id
-            binding.tvTextGender.text = args.gender
-            binding.tvTextStatus.text = args.status
-            binding.tvTextDetail.text = args.name
-            binding.imageView.setImage(args.image)
+            binding.tvTextGender.text = it.gender
+            binding.tvTextStatus.text = it.status
+            binding.imageView.setImage(it.image)
+            binding.tvTextDetail.text = it.name
         }
     }
 }

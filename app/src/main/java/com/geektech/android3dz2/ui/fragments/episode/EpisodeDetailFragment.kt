@@ -16,11 +16,10 @@ class EpisodeDetailFragment :
 
     override fun setupObserve() {
         viewModel.fetchEpisodeDetail(args.id).observe(viewLifecycleOwner) {
-            binding.tvTextName.id
-            binding.tvTextName.text = args.name
-            binding.tvTextAirDate.text = args.airDate
-            binding.tvTextCreated.text = args.created
-            binding.tvTextEpisode.text = args.episode
+            binding.tvTextName.text = it.name
+            binding.tvTextEpisode.text = it.episode
+            binding.tvTextAirDate.text = it.air_date
+            binding.tvTextCreated.text = it.created
         }
     }
 }

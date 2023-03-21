@@ -1,14 +1,15 @@
 package com.geektech.android3dz2.ui.fragments.location
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentLocationBinding
-import com.geektech.android3dz2.model.LocationModel
 import com.geektech.android3dz2.ui.adapters.LocationAdapter
+import kotlinx.coroutines.launch
 
 class LocationFragment :
     BaseFragment<FragmentLocationBinding, LocationViewModel>(R.layout.fragment_location) {
@@ -25,18 +26,15 @@ class LocationFragment :
     }
 
     override fun setupObserve() {
-        viewModel.fetchLocation().observe(viewLifecycleOwner) {
-            locationAdapter.setList(it.result)
+        lifecycleScope.launch {
+            viewModel.fetchLocation().collect {
+                locationAdapter.submitData(it)
+            }
         }
     }
 
-    private fun onItemClick(locationModel: LocationModel) {
+    private fun onItemClick(id: Int) {
         findNavController().navigate(LocationFragmentDirections.actionLocationFragmentToLocationDetailFragment(
-            locationModel.name,
-            locationModel.dimension,
-            locationModel.type,
-            locationModel.created,
-            locationModel.id)
-        )
+            id))
     }
 }
