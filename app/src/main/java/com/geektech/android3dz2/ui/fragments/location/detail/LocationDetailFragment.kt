@@ -1,4 +1,4 @@
-package com.geektech.android3dz2.ui.fragments.location
+package com.geektech.android3dz2.ui.fragments.location.detail
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -6,6 +6,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentLocationDetailBinding
+import com.geektech.android3dz2.ui.fragments.location.LocationViewModel
 
 class LocationDetailFragment :
     BaseFragment<FragmentLocationDetailBinding, LocationViewModel>(R.layout.fragment_location_detail) {

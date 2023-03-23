@@ -10,14 +10,19 @@ import retrofit2.HttpException
 
 private const val CHARACTER_STARTING_PAGE_INDEX = 1
 
-class CharacterPagingSource(private val service: CharacterApiServices) :
+class CharacterPagingSource(
+    private val service: CharacterApiServices, private val status: String,
+    private val gender: String,
+) :
     PagingSource<Int, CharacterModel>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterModel> {
         val position = params.key ?: CHARACTER_STARTING_PAGE_INDEX
         return try {
-            val response = service.fetchCharacter(position)
-            val nextPageNumber = Uri.parse(response.info.next).getQueryParameter("page")!!.toInt()
+            val response = service.fetchCharacter(position, status, gender)
+            val nextPageNumber =
+                if (response.info.next == null) null else Uri.parse(response.info.next)
+                    .getQueryParameter("page")!!.toInt()
             LoadResult.Page(
                 data = response.result,
                 prevKey = null,

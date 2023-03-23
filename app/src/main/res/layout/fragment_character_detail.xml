@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.fragments.character.CharacterDetailFragment">
+    tools:context=".ui.fragments.character.detail.CharacterDetailFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -88,4 +88,5 @@
         app:layout_constraintTop_toBottomOf="@id/item_status"
         app:layout_constraintVertical_bias="0.459"
         tools:text="gender" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

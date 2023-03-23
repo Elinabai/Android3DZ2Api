@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black4"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.character.filter.CharacterFilterFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/status"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <RadioGroup
+        android:id="@+id/chip_group_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:singleSelection="true">
+
+        <RadioButton
+            android:id="@+id/chip_alive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alive"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/chip_dead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dead"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/chip_unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unknown"
+            android:textColor="@color/white" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/gender"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/female"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/male"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radio_genderLess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/genderless"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radio_unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unknown"
+            android:textColor="@color/white" />
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/black3"
+        android:text="@string/apply"
+        android:textColor="@color/white" />
+
+</LinearLayout>

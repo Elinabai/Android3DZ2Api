@@ -36,5 +36,4 @@ class LocationPagingSource(private val service: LocationApiServices) :
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
-
 }

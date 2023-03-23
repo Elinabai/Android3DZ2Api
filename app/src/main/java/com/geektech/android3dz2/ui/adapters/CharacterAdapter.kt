@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.geektech.android3dz2.R
 import com.geektech.android3dz2.databinding.ItemCharacterBinding
 import com.geektech.android3dz2.extension.setImage
 import com.geektech.android3dz2.model.CharacterModel
@@ -25,6 +26,15 @@ class CharacterAdapter(val onItemClick: (id: Int) -> Unit) :
             binding.itemCharacterStatus.text = item?.status
             binding.itemCharacterGender.text = item?.gender
             binding.itemCharacterImage.setImage(item?.image.toString())
+
+            when (item?.status) {
+                "Alive",
+                -> binding.itemSmallRectangle.setBackgroundResource(R.drawable.alive_circle)
+                "Dead",
+                -> binding.itemSmallRectangle.setBackgroundResource(R.drawable.dead_circle)
+                "unknown",
+                -> binding.itemSmallRectangle.setBackgroundResource(R.drawable.unknown_circle)
+            }
         }
     }
 

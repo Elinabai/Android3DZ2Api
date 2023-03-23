@@ -14,4 +14,15 @@
     <string name="the_type_of_the_location">The type of the location.</string>
     <string name="time_at_which_the_location_was_created_in_the_database">Time at which the location was created in the database.</string>
     <string name="time_at_which_the_location_was_created_in_the_databas">time_at_which_the_location_was_created_in_the_databas</string>
+    <string name="filter">filter</string>
+    <string name="name">name</string>
+    <string name="alive">alive</string>
+    <string name="dead">dead</string>
+    <string name="unknown">unknown</string>
+    <string name="gender">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="genderless">Genderless</string>
+    <string name="apply">Apply</string>
+    <string name="status">Status</string>
 </resources>

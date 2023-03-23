@@ -10,4 +10,6 @@
     <color name="black3">#707070</color>
     <color name="black4">#2B2B2B</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FA0303</color>
+    <color name="green">#39F803</color>
 </resources>

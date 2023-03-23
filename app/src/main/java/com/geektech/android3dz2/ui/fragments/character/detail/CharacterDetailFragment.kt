@@ -1,4 +1,4 @@
-package com.geektech.android3dz2.ui.fragments.character
+package com.geektech.android3dz2.ui.fragments.character.detail
 
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
@@ -7,6 +7,7 @@ import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentCharacterDetailBinding
 import com.geektech.android3dz2.extension.setImage
+import com.geektech.android3dz2.ui.fragments.character.CharacterViewModel
 
 class CharacterDetailFragment :
     BaseFragment<FragmentCharacterDetailBinding, CharacterViewModel>(R.layout.fragment_character_detail) {

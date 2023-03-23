@@ -1,4 +1,4 @@
-package com.geektech.android3dz2.ui.fragments.episode
+package com.geektech.android3dz2.ui.fragments.episode.detail
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -6,6 +6,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentEpisodeDetailBinding
+import com.geektech.android3dz2.ui.fragments.episode.EpisodeViewModel
 
 class EpisodeDetailFragment :
     BaseFragment<FragmentEpisodeDetailBinding, EpisodeViewModel>(R.layout.fragment_episode_detail) {

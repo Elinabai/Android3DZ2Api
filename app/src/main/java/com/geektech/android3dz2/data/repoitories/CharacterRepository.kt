@@ -13,14 +13,14 @@ import retrofit2.Response
 
 class CharacterRepository {
 
-    fun fetchCharacter(): Flow<PagingData<CharacterModel>> {
+    fun fetchCharacter(status: String, gender: String): Flow<PagingData<CharacterModel>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                CharacterPagingSource(App.characterApiServices!!)
+                CharacterPagingSource(App.characterApiServices!!, status, gender)
             }).flow
     }
 

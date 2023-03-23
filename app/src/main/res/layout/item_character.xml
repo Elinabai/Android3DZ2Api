@@ -66,11 +66,21 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.43" />
 
+            <ImageView
+                android:id="@+id/item_small_rectangle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/dead_circle"
+                app:layout_constraintLeft_toRightOf="@+id/item_character_image"
+                app:layout_constraintTop_toBottomOf="@id/item_status" />
+
             <TextView
                 android:id="@+id/item_character_status"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/white"
                 android:textSize="15sp"

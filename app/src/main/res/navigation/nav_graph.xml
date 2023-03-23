@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_characterFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment" />
+        <action
+            android:id="@+id/action_characterFragment_to_characterFilterFragment"
+            app:destination="@id/characterFilterFragment" />
     </fragment>
 
     <fragment
@@ -37,7 +40,7 @@
 
     <fragment
         android:id="@+id/characterDetailFragment"
-        android:name="com.geektech.android3dz2.ui.fragments.character.CharacterDetailFragment"
+        android:name="com.geektech.android3dz2.ui.fragments.character.detail.CharacterDetailFragment"
         android:label="fragment_character_detail"
         tools:layout="@layout/fragment_character_detail">
         <argument
@@ -47,7 +50,7 @@
 
     <fragment
         android:id="@+id/episodeDetailFragment"
-        android:name="com.geektech.android3dz2.ui.fragments.episode.EpisodeDetailFragment"
+        android:name="com.geektech.android3dz2.ui.fragments.episode.detail.EpisodeDetailFragment"
         android:label="fragment_episode_detail"
         tools:layout="@layout/fragment_episode_detail">
         <argument
@@ -57,11 +60,16 @@
 
     <fragment
         android:id="@+id/locationDetailFragment"
-        android:name="com.geektech.android3dz2.ui.fragments.location.LocationDetailFragment"
+        android:name="com.geektech.android3dz2.ui.fragments.location.detail.LocationDetailFragment"
         android:label="fragment_location_detail"
         tools:layout="@layout/fragment_location_detail">
         <argument
             android:name="id"
             app:argType="integer" />
     </fragment>
+    <dialog
+        android:id="@+id/characterFilterFragment"
+        android:name="com.geektech.android3dz2.ui.fragments.character.filter.CharacterFilterFragment"
+        android:label="fragment_character_filter"
+        tools:layout="@layout/fragment_character_filter" />
 </navigation>
