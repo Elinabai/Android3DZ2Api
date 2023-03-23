@@ -12,6 +12,6 @@ interface EpisodeApiServices {
     @GET("api/episode")
     suspend fun fetchEpisode(@Query("page")page: Int): RickAndMortyResponse<EpisodeModel>
 
-    @GET("/api/episode/{id}")
+    @GET("api/episode/{id}")
     fun fetchEpisodeDetail(@Path("id") id: Int): Call<EpisodeModel>
 }

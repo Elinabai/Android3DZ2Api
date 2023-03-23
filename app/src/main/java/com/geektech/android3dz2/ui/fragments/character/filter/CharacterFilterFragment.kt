@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.geektech.android3dz2.data.repoitories.CharacterRepository
 import com.geektech.android3dz2.databinding.FragmentCharacterFilterBinding
 import com.geektech.android3dz2.ui.fragments.character.CharacterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -14,9 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class CharacterFilterFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentCharacterFilterBinding
-    private val viewModel: CharacterViewModel by activityViewModels {
-        CharacterViewModelFactory(CharacterRepository())
-    }
+    private val viewModel: CharacterViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -16,6 +16,6 @@ interface CharacterApiServices {
         @Query("gender") gender: String,
     ): RickAndMortyResponse<CharacterModel>
 
-    @GET("/api/character/{id}")
+    @GET("api/character/{id}")
     fun fetchCharactersDetail(@Path("id") id: Int): Call<CharacterModel>
 }
