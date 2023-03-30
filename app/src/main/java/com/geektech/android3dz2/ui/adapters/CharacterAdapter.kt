@@ -2,8 +2,8 @@ package com.geektech.android3dz2.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.android3dz2.R
 import com.geektech.android3dz2.databinding.ItemCharacterBinding
@@ -11,7 +11,7 @@ import com.geektech.android3dz2.extension.setImage
 import com.geektech.android3dz2.model.CharacterModel
 
 class CharacterAdapter(val onItemClick: (id: Int) -> Unit) :
-    PagingDataAdapter<CharacterModel, CharacterAdapter.ViewHolder>(diffUtil) {
+    ListAdapter<CharacterModel, CharacterAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -49,7 +49,7 @@ class CharacterAdapter(val onItemClick: (id: Int) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+            holder.onBind(getItem(position))
     }
 
     companion object {

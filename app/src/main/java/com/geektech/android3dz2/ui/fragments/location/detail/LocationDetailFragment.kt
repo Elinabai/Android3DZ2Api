@@ -6,13 +6,14 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.android3dz2.R
 import com.geektech.android3dz2.base.BaseFragment
 import com.geektech.android3dz2.databinding.FragmentLocationDetailBinding
-import com.geektech.android3dz2.ui.fragments.location.LocationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LocationDetailFragment :
-    BaseFragment<FragmentLocationDetailBinding, LocationViewModel>(R.layout.fragment_location_detail) {
+    BaseFragment<FragmentLocationDetailBinding, LocationDetailViewModel>(R.layout.fragment_location_detail) {
 
     override val binding by viewBinding(FragmentLocationDetailBinding::bind)
-    override val viewModel: LocationViewModel by viewModels()
+    override val viewModel: LocationDetailViewModel by viewModels()
     private val args by navArgs<LocationDetailFragmentArgs>()
 
     override fun setupObserve() {

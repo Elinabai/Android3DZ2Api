@@ -1,19 +1,16 @@
 package com.geektech.android3dz2.ui.fragments.location
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.paging.cachedIn
 import com.geektech.android3dz2.data.repoitories.LocationRepository
-import com.geektech.android3dz2.model.LocationModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class LocationViewModel : ViewModel() {
+@HiltViewModel
+class LocationViewModel @Inject constructor(
+    private val locationRepository: LocationRepository
+) : ViewModel() {
 
-    private val locationRepository = LocationRepository()
+    fun fetchLocation() = locationRepository.fetchLocation()
 
-    fun fetchLocation() = locationRepository.fetchLocation().cachedIn(viewModelScope)
-
-    fun fetchLocationDetail(id: Int): MutableLiveData<LocationModel> {
-        return locationRepository.fetchLocationDetail(id)
-    }
+    fun getAll() = locationRepository.getAll()
 }

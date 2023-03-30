@@ -2,14 +2,14 @@ package com.geektech.android3dz2.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.android3dz2.databinding.ItemEpisodeBinding
 import com.geektech.android3dz2.model.EpisodeModel
 
 class EpisodeAdapter(val onItemClick: (id: Int) -> Unit) :
-    PagingDataAdapter<EpisodeModel, EpisodeAdapter.ViewHolder>(diffUtil) {
+    ListAdapter<EpisodeModel, EpisodeAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val binding: ItemEpisodeBinding) :
         RecyclerView.ViewHolder(binding.root) {

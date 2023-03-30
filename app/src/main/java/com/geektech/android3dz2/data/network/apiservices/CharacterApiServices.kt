@@ -10,11 +10,10 @@ import retrofit2.http.Query
 interface CharacterApiServices {
 
     @GET("api/character")
-    suspend fun fetchCharacter(
-        @Query("page") page: Int,
+    fun fetchCharacter(
         @Query("status") status: String,
         @Query("gender") gender: String,
-    ): RickAndMortyResponse<CharacterModel>
+    ): Call<RickAndMortyResponse<CharacterModel>>
 
     @GET("api/character/{id}")
     fun fetchCharactersDetail(@Path("id") id: Int): Call<CharacterModel>

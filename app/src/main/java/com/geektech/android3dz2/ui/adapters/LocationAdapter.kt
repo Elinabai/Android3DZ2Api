@@ -2,14 +2,14 @@ package com.geektech.android3dz2.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.android3dz2.databinding.ItemLocationBinding
 import com.geektech.android3dz2.model.LocationModel
 
 class LocationAdapter(val onItemClick: (id: Int) -> Unit) :
-    PagingDataAdapter<LocationModel, LocationAdapter.ViewHolder>(diffUtil) {
+    ListAdapter<LocationModel, LocationAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val binding: ItemLocationBinding) :
         RecyclerView.ViewHolder(binding.root) {

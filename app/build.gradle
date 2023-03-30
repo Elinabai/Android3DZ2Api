@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -31,7 +33,7 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 }
@@ -75,7 +77,17 @@ dependencies {
     //noinspection GradleDependency
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_binding_property_delegate"
 
-    // paging 3
-    def paging_version = "3.1.1"
-    implementation "androidx.paging:paging-runtime:$paging_version"
+//    // paging 3
+//    def paging_version = "3.1.1"
+//    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    //hilt
+    def hilt_version = '2.45'
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    //Room
+    def room_version = "2.5.0"
+    implementation ("androidx.room:room-runtime:$room_version")
+    kapt ("androidx.room:room-compiler:2.5.1")
 }

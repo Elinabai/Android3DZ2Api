@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.geektech.android3dz2.databinding.FragmentCharacterFilterBinding
-import com.geektech.android3dz2.ui.fragments.character.CharacterViewModel
+import com.geektech.android3dz2.extension.setBackStackData
+import com.geektech.android3dz2.model.Filter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterFilterFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentCharacterFilterBinding
-    private val viewModel: CharacterViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,67 +32,66 @@ class CharacterFilterFragment : BottomSheetDialogFragment() {
         binding.btnApply.setOnClickListener {
             when (true) {
                 binding.chipAlive.isChecked and binding.radioFemale.isChecked -> {
-                    viewModel.fetchCharacter("alive", "female")
+                    setBackStackData("filter", Filter("alive", "female"))
                 }
                 binding.chipDead.isChecked and binding.radioFemale.isChecked -> {
-                    viewModel.fetchCharacter("dead", "female")
+                    setBackStackData("filter", Filter("dead", "female"))
                 }
                 binding.chipUnknown.isChecked and binding.radioFemale.isChecked -> {
-                    viewModel.fetchCharacter("unknown", "female")
+                    setBackStackData("filter", Filter("unknown", "female"))
                 }
                 binding.chipAlive.isChecked and binding.radioMale.isChecked -> {
-                    viewModel.fetchCharacter("alive", "male")
+                    setBackStackData("filter", Filter("alive", "male"))
                 }
                 binding.chipDead.isChecked and binding.radioMale.isChecked -> {
-                    viewModel.fetchCharacter("dead", "male")
+                    setBackStackData("filter", Filter("dead", "male"))
                 }
                 binding.chipUnknown.isChecked and binding.radioMale.isChecked -> {
-                    viewModel.fetchCharacter("unknown", "male")
+                    setBackStackData("filter", Filter("unknown", "male"))
                 }
                 binding.chipAlive.isChecked and binding.radioGenderLess.isChecked -> {
-                    viewModel.fetchCharacter("alive", "genderless")
+                    setBackStackData("filter", Filter("alive", "genderless"))
                 }
                 binding.chipDead.isChecked and binding.radioGenderLess.isChecked -> {
-                    viewModel.fetchCharacter("dead", "genderless")
+                    setBackStackData("filter", Filter("dead", "genderless"))
                 }
                 binding.chipUnknown.isChecked and binding.radioGenderLess.isChecked -> {
-                    viewModel.fetchCharacter("unknown", "genderless")
+                    setBackStackData("filter", Filter("unknown", "genderless"))
                 }
                 binding.chipAlive.isChecked and binding.radioUnknown.isChecked -> {
-                    viewModel.fetchCharacter("alive", "unknown")
+                    setBackStackData("filter", Filter("alive", "unknown"))
                 }
                 binding.chipDead.isChecked and binding.radioUnknown.isChecked -> {
-                    viewModel.fetchCharacter("dead", "unknown")
+                    setBackStackData("filter", Filter("dead", "unknown"))
                 }
                 binding.chipUnknown.isChecked and binding.radioUnknown.isChecked -> {
-                    viewModel.fetchCharacter("unknown", "unknown")
+                    setBackStackData("filter", Filter("unknown", "unknown"))
                 }
                 binding.chipAlive.isChecked -> {
-                    viewModel.fetchCharacter("alive", "")
+                    setBackStackData("filter", Filter("alive", ""))
                 }
                 binding.chipDead.isChecked -> {
-                    viewModel.fetchCharacter("dead", "")
+                    setBackStackData("filter", Filter("dead", ""))
                 }
                 binding.chipUnknown.isChecked -> {
-                    viewModel.fetchCharacter("unknown", "")
+                    setBackStackData("filter", Filter("unknown", ""))
                 }
                 binding.radioFemale.isChecked -> {
-                    viewModel.fetchCharacter("", "female")
+                    setBackStackData("filter", Filter("", "female"))
                 }
                 binding.radioMale.isChecked -> {
-                    viewModel.fetchCharacter("", "male")
+                    setBackStackData("filter", Filter("", "male"))
                 }
                 binding.radioGenderLess.isChecked -> {
-                    viewModel.fetchCharacter("", "genderLess")
+                    setBackStackData("filter", Filter("", "genderLess"))
                 }
                 binding.radioUnknown.isChecked -> {
-                    viewModel.fetchCharacter("", "unknown")
+                    setBackStackData("filter", Filter("", "unknown"))
                 }
                 else -> {
-                    viewModel.fetchCharacter("", "")
+                    setBackStackData("filter", Filter("", ""))
                 }
             }
-            findNavController().navigateUp()
         }
     }
 }
